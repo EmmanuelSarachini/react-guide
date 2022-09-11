@@ -5,16 +5,20 @@ import Card from '../UI/Card';
 import "./ExpenseList.css";
 
 const ExpenseList = ({ expenses }) => {
-  const [selectValue, setSelectedValue] = useState('2020');
+  const [selectValue, setSelectedValue] = useState('');
   const filterChangeHandler = (selectYear) => {
     setSelectedValue(selectYear);
   };
 
+  const filteredArray = expenses.filter(expense => {
+    return expense.date.getFullYear().toString() === selectValue;
+  });
+
   return (
     <Card className="expenses">
       <ExpensesFilter selected={selectValue} onFilterChangeHandler={filterChangeHandler}/>
-      {expenses.map((item) => (
-        <ExpenseItem key={item.id} title={item.title} amount={item.amount} date={item.date} />
+      {filteredArray.map((expense) => (
+        <ExpenseItem key={expense.id} title={expense.title} amount={expense.amount} date={expense.date} />
       ))}
     </Card>
   );
