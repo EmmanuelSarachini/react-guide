@@ -31,13 +31,6 @@ const App = () => {
     setExpenses((previousExpenses) => { return [expense, ...previousExpenses] });
   };
 
-  // return React.createElement(
-  //   'div', 
-  //   {}, 
-  //   React.createElement('h2', {}, "Let's get started!"), 
-  //   React.createElement(ExpenseList, { expenses: expenses.expenses })
-  // );
-
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
